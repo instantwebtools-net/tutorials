@@ -2,4 +2,4 @@
 
 Author : [InstantWebTools](https://instantwebtools.net/)
 
-1. Infinite Scroll in Laravel using API.
+1. [Data Table + Pagination + 3rd Party API](https://github.com/instantwebtools-net/tutorials/tree/master/datatable-pagination-with-api-vue-js/app)
