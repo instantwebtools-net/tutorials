@@ -12,10 +12,10 @@
       class="elevation-1"
     >
       <template v-slot:item.logo="{ item }">
-        <img :src="item.airline[0].logo" style="width: 10%;" />
+        <img :src="item.airline.logo" style="width: 10%;" />
       </template>
       <template v-slot:item.website="{ item }">
-        <a :href="item.airline[0].website">{{ item.airline[0].website }}</a>
+        <a :href="item.airline.website">{{ item.airline.website }}</a>
       </template>
     </v-data-table>
   </div>
