@@ -1,13 +1,14 @@
 <template>
   <div>
     <v-data-table
-      :page="pageNumber"
+      :page="page"
+      :pageCount="numberOfPages"
       :headers="headers"
       :items="passengers"
       :options.sync="options"
       :server-items-length="totalPassengers"
       :loading="loading"
-      class="elevation-1"
+        class="elevation-1"
     ></v-data-table>
   </div>
 </template>
@@ -17,11 +18,12 @@ import axios from "axios";
 export default {
   data() {
     return {
+      page: 0,
       totalPassengers: 0,
+      numberOfPages: 0,
       passengers: [],
       loading: true,
       options: {},
-      pageNumber: 0,
       headers: [
         { text: "Passenger Name", value: "name" },
         { text: "Number Of Trips", value: "trips" },
@@ -29,10 +31,19 @@ export default {
       ],
     };
   },
+  watch: {
+    options: {
+      handler () {
+        this.readDataFromAPI();
+      }      
+    },
+    deep: true,
+  },
   methods: {
     readDataFromAPI() {
       this.loading = true;
       const { page, itemsPerPage } = this.options;
+      console.log("Page Number ", page, itemsPerPage);
       axios
         .get(
           "https://api.instantwebtools.net/v1/passenger?size=" +
@@ -42,9 +53,9 @@ export default {
         )
         .then((response) => {
           this.loading = false;
-          console.log(response.data);
           this.passengers = response.data.data;
           this.totalPassengers = response.data.totalPassengers;
+          this.numberOfPages = response.data.totalPages;
         });
     },
   },
