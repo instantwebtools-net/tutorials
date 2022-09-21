@@ -14,7 +14,7 @@
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
-    "vuetify": "^2.2.11"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.4.0",
